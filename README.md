@@ -1,5 +1,4 @@
-# wildrift
-Utility script for Wild Rift
+# Utility script for Wild Rift
 
 To print champions that have tank role run:
 > python wildrift.py -r tank
