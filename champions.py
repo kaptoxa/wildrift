@@ -3,21 +3,21 @@ import textwrap
 from positions import positions
 from roles import roles
 
+OUTPUT_WIDTH = 30
 
-def print_wrapped_set(items: Iterable):
-    print(textwrap.fill(' '.join(item.capitalize() for item in items), width=30))
+
+def print_wrapped_set(items: Iterable) -> str:
+    return textwrap.fill(' '.join(item.capitalize() for item in items), width=OUTPUT_WIDTH)
 
 
 def print_set_champions(champions: dict, key: str | None = None):
     if not key:
-        for key, value in champions.items():
-            print(f"{key.upper()} champions:")
-            print_wrapped_set(sorted(value))
-            print()
+        print('\n\n'.join(
+            f"{key.upper()} champions:\n" + print_wrapped_set(sorted(value))
+            for key, value in champions.items()
+        ))
     else:
-        print(f"{key.upper()} champions:")
-        print_wrapped_set(sorted(champions[key]))
-        print()
+        print(f"{key.upper()} champions:\n" + print_wrapped_set(sorted(champions[key])))
 
 
 def position_statistic():
