@@ -6,18 +6,18 @@ from roles import roles
 OUTPUT_WIDTH = 30
 
 
-def print_wrapped_set(items: Iterable) -> str:
+def wrapped_set(items: Iterable) -> str:
     return textwrap.fill(' '.join(item.capitalize() for item in items), width=OUTPUT_WIDTH)
 
 
-def print_set_champions(champions: dict, key: str | None = None):
+def print_champions_dict(champions: dict, key: str | None = None):
     if not key:
         print('\n\n'.join(
-            f"{key.upper()} champions:\n" + print_wrapped_set(sorted(value))
+            f"{key.upper()} champions:\n" + wrapped_set(sorted(value))
             for key, value in champions.items()
         ))
     else:
-        print(f"{key.upper()} champions:\n" + print_wrapped_set(sorted(champions[key])))
+        print(f"{key.upper()} champions:\n" + wrapped_set(sorted(champions[key])))
 
 
 def position_statistic():

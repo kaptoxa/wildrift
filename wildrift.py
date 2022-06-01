@@ -1,6 +1,6 @@
 from argparse import ArgumentParser
 from champions import positions, roles
-from champions import print_set_champions
+from champions import print_champions_dict
 
 
 def create_argument_parser() -> ArgumentParser:
@@ -17,12 +17,12 @@ if __name__ == "__main__":
 
     if namespace.position:
         if namespace.position in positions:
-            print_set_champions(positions, namespace.position)
+            print_champions_dict(positions, namespace.position)
         elif namespace.position == "all":
-            print_set_champions(positions)
+            print_champions_dict(positions)
 
     if namespace.roles:
         if namespace.roles in roles:
-            print_set_champions(roles, namespace.roles)
+            print_champions_dict(roles, namespace.roles)
         elif namespace.roles == "all":
-            print_set_champions(roles)
+            print_champions_dict(roles)
