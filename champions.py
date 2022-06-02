@@ -1,5 +1,3 @@
-import setuptools.package_index
-
 from positions import positions
 from roles import roles
 
