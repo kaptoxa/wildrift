@@ -1,12 +1,23 @@
+from typing import Iterable
 from argparse import ArgumentParser
-from champions import positions, roles
-from champions import print_champions_dict
+from textwrap import fill
+
+from positions import positions
+from roles import roles
+
+from champions import leave_only, all_champions
+
+OUTPUT_WIDTH = 30
+
+
+def wrapped_set(items: Iterable) -> str:
+    return fill(' '.join(item.capitalize() for item in items), width=OUTPUT_WIDTH)
 
 
 def create_argument_parser() -> ArgumentParser:
     argument_parser = ArgumentParser()
-    argument_parser.add_argument("-position", "-p")
-    argument_parser.add_argument("-roles", "-r")
+    argument_parser.add_argument("-positions", "-p", nargs='+')
+    argument_parser.add_argument("-roles", "-r", nargs="+")
     argument_parser.add_argument("-locale", "-l", default="en")
     return argument_parser
 
@@ -15,14 +26,13 @@ if __name__ == "__main__":
     argument_parser = create_argument_parser()
     namespace = argument_parser.parse_args()
 
-    if namespace.position:
-        if namespace.position in positions:
-            print_champions_dict(positions, namespace.position)
-        elif namespace.position == "all":
-            print_champions_dict(positions)
+    champions = all_champions()
+    if namespace.positions:
+        for position in namespace.positions:
+            champions = leave_only(champions, positions, position)
 
     if namespace.roles:
-        if namespace.roles in roles:
-            print_champions_dict(roles, namespace.roles)
-        elif namespace.roles == "all":
-            print_champions_dict(roles)
+        for role in namespace.roles:
+            champions = leave_only(champions, roles, role)
+
+    print(wrapped_set(sorted(champions)))
