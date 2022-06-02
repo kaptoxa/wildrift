@@ -1,9 +1,8 @@
 # Utility script for Wild Rift
 
 I wrote this script in order to figure out the idea of a counter-pick myself.
-You can use it for example like that:
 
-To filter champions by positions or roles:
+You can use it for example like that:
 > counter-pick.py mundo -p mid -r mage
 
 The logic of the counter-pick strategy is presented in this figure
