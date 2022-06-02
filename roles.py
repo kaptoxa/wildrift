@@ -21,9 +21,9 @@ roles = {
     sone varus ziggs
     """,
     "slayer": """
-    ahri yasuo zed rengar pantheon ekko,
-    yi evelynn kaisa fiora vayne akali,
-    akshan fizz irelia katakina khazix leesin,
+    ahri yasuo zed rengar pantheon ekko
+    yi evelynn kaisa fiora vayne akali
+    akshan fizz irelia katakina khazix leesin
     riven
     """,
     "controller": """
